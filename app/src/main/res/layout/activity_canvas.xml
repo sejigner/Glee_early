@@ -60,7 +60,17 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_hambaksnow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/hambaksnow"
+                android:text="함박눈"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tv_cafe24"
@@ -69,9 +79,7 @@
                 android:layout_marginStart="26sp"
                 android:fontFamily="@font/cafe24_surround_air"
                 android:text="카페24 써라운드에어"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tv_arita"
@@ -91,19 +99,13 @@
                 android:text="마포꽃섬"
                 android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/tv_hambaksnow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:fontFamily="@font/hambaksnow"
-                android:text="함박눈"
-                android:textSize="18sp" />
+
 
         </LinearLayout>
     </HorizontalScrollView>
 
     <ScrollView
+        android:id="@+id/sv_work"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/sv_fonts">
@@ -132,8 +134,6 @@
                 android:textSize="70sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
