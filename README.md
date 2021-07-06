@@ -1,2 +1,0 @@
-# Glee
-Hangeul App Project
