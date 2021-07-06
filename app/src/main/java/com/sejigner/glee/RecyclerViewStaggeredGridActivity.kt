@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.fragment_share.*
 class RecyclerViewStaggeredGridActivity : FragmentShare() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
             : View? {
+        initView()
         return inflater.inflate(R.layout.fragment_share, container, false)
     }
     private fun initView() {
@@ -26,13 +27,13 @@ class RecyclerViewStaggeredGridActivity : FragmentShare() {
     private fun generateDummyData(): List<WorkModel> {
         val listOfMovie = mutableListOf<WorkModel>()
 
-        var workModel = WorkModel("지멘", 128, 500, 2)
+        var workModel = WorkModel("지멘", 128, R.mipmap.ic_launcher, R.drawable.ic_people)
         listOfMovie.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, 400, 1)
+        workModel = WorkModel("지멘", 128, R.mipmap.ic_launcher, R.drawable.ic_people)
         listOfMovie.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, 400, 1)
+        workModel = WorkModel("뮌스터", 128, R.mipmap.ic_launcher, R.drawable.ic_people)
         listOfMovie.add(workModel)
 
         workModel = WorkModel("뮌스터", 298, 400, 1)
