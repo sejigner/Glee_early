@@ -38,22 +38,22 @@ open class FragmentShare : Fragment() {
     private fun generateDummyData(): List<WorkModel> {
         val listOfMovie = mutableListOf<WorkModel>()
 
-        var workModel = WorkModel("지멘", 128, R.mipmap.ic_launcher, R.drawable.ic_people)
+        var workModel = WorkModel("지멘", 128, R.drawable.girl, R.drawable.girl)
         listOfMovie.add(workModel)
 
-        workModel = WorkModel("지멘", 128, R.mipmap.ic_launcher, R.drawable.ic_people)
+        workModel = WorkModel("지멘", 128, R.drawable.girl, R.drawable.girl)
         listOfMovie.add(workModel)
 
-        workModel = WorkModel("뮌스터", 128, R.mipmap.ic_launcher, R.drawable.ic_people)
+        workModel = WorkModel("뮌스터", 128, R.drawable.girl, R.drawable.girl)
         listOfMovie.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, 400, 1)
+        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.girl)
         listOfMovie.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, 400, 1)
+        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.girl)
         listOfMovie.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, 400, 1)
+        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.girl)
         listOfMovie.add(workModel)
 
         return listOfMovie
