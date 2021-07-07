@@ -100,7 +100,6 @@
                 android:textSize="18sp" />
 
 
-
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -114,26 +113,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/tv_work_canvas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/cafe24_surround_air"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="20dp"
+                android:text="@string/work_canvas"
+                android:textColor="#DDDDDD"
+                android:textSize="70sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <com.sejigner.glee.PaintView
                 android:id="@+id/paintView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="@id/tv_work_canvas"
                 app:layout_constraintTop_toTopOf="@id/tv_work_canvas" />
-
-            <TextView
-                android:id="@+id/tv_work_canvas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/cafe24_surround_air"
-                android:lineSpacingExtra="20dp"
-                android:layout_marginBottom="10dp"
-                android:text="@string/work_canvas"
-                android:gravity="center_horizontal"
-                android:textColor="#DDDDDD"
-                android:textSize="70sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
