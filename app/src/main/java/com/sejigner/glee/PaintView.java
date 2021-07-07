@@ -36,6 +36,7 @@ public class PaintView extends View {
     private Bitmap mBitmap;
     private Canvas mCanvas;
     private Paint mBitmapPaint = new Paint(Paint.DITHER_FLAG);
+    public static Context context_main;
 
     public PaintView(Context context) {
         this(context, null);
@@ -91,6 +92,8 @@ public class PaintView extends View {
     protected void onDraw(Canvas canvas) {
         canvas.save();
         mCanvas.drawColor(backgroundColor);
+        // 부모뷰 스크롤뷰 터치 가로채기 방지
+        getParent().requestDisallowInterceptTouchEvent(true);
 
         for (FingerPath fp : paths) {
             mPaint.setColor(fp.color);

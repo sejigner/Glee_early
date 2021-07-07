@@ -10,6 +10,7 @@ import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnLayout
+import com.sejigner.glee.Scroll.isPainting
 import kotlinx.android.synthetic.main.activity_canvas.*
 import kotlinx.android.synthetic.main.activity_canvas.tv_hambaksnow
 import kotlinx.android.synthetic.main.activity_canvas.tv_cafe24
@@ -17,9 +18,14 @@ import kotlinx.android.synthetic.main.activity_canvas.tv_arita
 import kotlinx.android.synthetic.main.activity_canvas.tv_mapo
 import kotlinx.android.synthetic.main.fragment_home.*
 
+object Scroll {
+    var isPainting:Boolean = true
+}
+
 class CanvasActivity : AppCompatActivity() {
     private var paintView: PaintView? = null
     private var width : Int? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +38,22 @@ class CanvasActivity : AppCompatActivity() {
             var height = it.measuredHeight
             paintView!!.init(width, height)
         }
+        tv_is_scrollable.setOnClickListener {
+            if(isPainting) {
+                paintView!!.setOnTouchListener { view, event -> // 터치 이벤트 제거 (필사 기능 off)
+                    true
+                }
+                isPainting = false
+            }
+            else {
+                paintView!!.setOnTouchListener { view, event -> // 터치 이벤트
+                    false
+                }
+                isPainting = true
+            }
+
+        }
+
 
         tv_cafe24.setOnClickListener {
             tv_work_canvas.typeface = Typeface.createFromAsset(applicationContext.assets, "fonts/cafe24_surround_air.ttf")
