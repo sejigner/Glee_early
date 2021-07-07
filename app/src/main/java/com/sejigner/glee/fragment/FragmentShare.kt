@@ -1,11 +1,11 @@
 package com.sejigner.glee.fragment
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.sejigner.glee.GridItemDecoration
 import com.sejigner.glee.R
@@ -16,46 +16,46 @@ import kotlinx.android.synthetic.main.fragment_share.*
 open class FragmentShare : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
             : View? {
-
         return inflater.inflate(R.layout.fragment_share, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         initView()
     }
 
     private fun initView() {
-        recyclerViewWorks.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        //This will for default android divider
-        recyclerViewWorks.addItemDecoration(GridItemDecoration(10, 2))
 
-        val movieListAdapter = WorkListStaggeredAdapter()
-        recyclerViewWorks.adapter = movieListAdapter
-        movieListAdapter.setWorkList(generateDummyData())
+        rv_work.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        //This will for default android divider
+        rv_work.addItemDecoration(GridItemDecoration(10, 2))
+
+        val workListAdapter = WorkListStaggeredAdapter()
+        rv_work.adapter = workListAdapter
+        workListAdapter.setWorkList(generateDummyData())
     }
 
     private fun generateDummyData(): List<WorkModel> {
-        val listOfMovie = mutableListOf<WorkModel>()
+        val listOfWork = mutableListOf<WorkModel>()
 
-        var workModel = WorkModel("지멘", 128, R.drawable.girl, R.drawable.girl)
-        listOfMovie.add(workModel)
+        var workModel = WorkModel("지멘", 128,R.drawable.exam_1 , R.drawable.girl)
+        listOfWork.add(workModel)
 
         workModel = WorkModel("지멘", 128, R.drawable.girl, R.drawable.girl)
-        listOfMovie.add(workModel)
+        listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 128, R.drawable.girl, R.drawable.girl)
-        listOfMovie.add(workModel)
+        workModel = WorkModel("뮌스터", 128, R.drawable.exam_2, R.drawable.girl)
+        listOfWork.add(workModel)
+
+        workModel = WorkModel("뮌스터", 298, R.drawable.exam_3, R.drawable.girl)
+        listOfWork.add(workModel)
+
+        workModel = WorkModel("뮌스터", 298, R.drawable.exam_1, R.drawable.girl)
+        listOfWork.add(workModel)
 
         workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.girl)
-        listOfMovie.add(workModel)
+        listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.girl)
-        listOfMovie.add(workModel)
-
-        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.girl)
-        listOfMovie.add(workModel)
-
-        return listOfMovie
+        return listOfWork
     }
 }

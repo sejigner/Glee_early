@@ -15,36 +15,36 @@ class RecyclerViewStaggeredGridActivity : FragmentShare() {
         return inflater.inflate(R.layout.fragment_share, container, false)
     }
     private fun initView() {
-        recyclerViewWorks.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        rv_work.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         //This will for default android divider
-        recyclerViewWorks.addItemDecoration(GridItemDecoration(10, 2))
+        rv_work.addItemDecoration(GridItemDecoration(10, 2))
 
-        val movieListAdapter = WorkListStaggeredAdapter()
-        recyclerViewWorks.adapter = movieListAdapter
-        movieListAdapter.setWorkList(generateDummyData())
+        val workListAdapter = WorkListStaggeredAdapter()
+        rv_work.adapter = workListAdapter
+        workListAdapter.setWorkList(generateDummyData())
     }
 
     private fun generateDummyData(): List<WorkModel> {
-        val listOfMovie = mutableListOf<WorkModel>()
+        val listOfWork = mutableListOf<WorkModel>()
 
-        var workModel = WorkModel("지멘", 128, R.mipmap.ic_launcher, R.drawable.ic_people)
-        listOfMovie.add(workModel)
+        var workModel = WorkModel("지멘", 128, R.drawable.girl, R.drawable.girl)
+        listOfWork.add(workModel)
 
-        workModel = WorkModel("지멘", 128, R.mipmap.ic_launcher, R.drawable.ic_people)
-        listOfMovie.add(workModel)
+        workModel = WorkModel("지멘", 128, R.drawable.girl, R.drawable.girl)
+        listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 128, R.mipmap.ic_launcher, R.drawable.ic_people)
-        listOfMovie.add(workModel)
+        workModel = WorkModel("뮌스터", 128, R.drawable.girl, R.drawable.girl)
+        listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, 400, 1)
-        listOfMovie.add(workModel)
+        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.girl)
+        listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, 400, 1)
-        listOfMovie.add(workModel)
+        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.girl)
+        listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, 400, 1)
-        listOfMovie.add(workModel)
+        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.girl)
+        listOfWork.add(workModel)
 
-        return listOfMovie
+        return listOfWork
     }
 }
