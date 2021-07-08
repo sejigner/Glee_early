@@ -38,7 +38,7 @@ class CanvasActivity : AppCompatActivity() {
             var height = it.measuredHeight
             paintView!!.init(width, height)
         }
-        tv_is_scrollable.setOnClickListener {
+        btn_toggle_scroll.setOnClickListener {
             if(isPainting) {
                 paintView!!.setOnTouchListener { view, event -> // 터치 이벤트 제거 (필사 기능 off)
                     true

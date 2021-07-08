@@ -38,23 +38,27 @@ open class FragmentShare : Fragment() {
     private fun generateDummyData(): List<WorkModel> {
         val listOfWork = mutableListOf<WorkModel>()
 
-        var workModel = WorkModel("지멘", 128,R.drawable.exam_1 , R.drawable.girl)
+        var workModel = WorkModel("지멘", 128,R.drawable.exam_1 , R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("지멘", 128, R.drawable.girl, R.drawable.girl)
+        workModel = WorkModel("뮌스터", 128, R.drawable.exam_2, R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 128, R.drawable.exam_2, R.drawable.girl)
+        workModel = WorkModel("뮌스터", 298, R.drawable.exam_3, R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, R.drawable.exam_3, R.drawable.girl)
+        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, R.drawable.exam_1, R.drawable.girl)
+        workModel = WorkModel("뮌스터", 298, R.drawable.exam_3, R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.girl)
+        workModel = WorkModel("뮌스터", 298, R.drawable.exam_1, R.drawable.ic_my_page)
         listOfWork.add(workModel)
+        workModel = WorkModel("지멘", 128, R.drawable.girl, R.drawable.ic_my_page)
+        listOfWork.add(workModel)
+
+
 
         return listOfWork
     }

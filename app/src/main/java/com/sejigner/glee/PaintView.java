@@ -161,4 +161,13 @@ public class PaintView extends View {
 
         return true;
     }
+
+    public void undo() {
+        // check whether the List is empty or not
+        // if empty, the remove method will return an error
+        if (paths.size() != 0) {
+            paths.remove(paths.size() - 1);
+            invalidate();
+        }
+    }
 }
