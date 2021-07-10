@@ -45,4 +45,5 @@
     <string name="font_mapoFlowerIsland">마포꽃섬</string>
     <string name="font_cafe24SurroundAir">카페24 써라운드에어</string>
     <string name="font_aritaBuri">아리따 부리</string>
+    <string name="draw_thickness">%d</string>
 </resources>

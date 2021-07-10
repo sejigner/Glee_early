@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -21,7 +22,6 @@ public class CustomView extends View {
     private float mX, mY;
     private Path drawPath;
     private Paint canvasPaint;
-    public static final int DEFAULT_BG_COLOR = Color.TRANSPARENT;
     private Paint drawPaint;
     private int paintColor = 0xFF00FF0C;
     private Canvas drawCanvas;
@@ -29,7 +29,6 @@ public class CustomView extends View {
     private float currentBrushSize, lastBrushSize;
     private ArrayList<Path> paths = new ArrayList<Path>();
     private ArrayList<Path> undonePaths = new ArrayList<Path>();
-    private int backgroundColor = DEFAULT_BG_COLOR;
 
     public CustomView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -135,6 +134,21 @@ public class CustomView extends View {
             paths.add(undonePaths.remove(undonePaths.size() - 1));
             invalidate();
         }
+    }
+
+
+    public void setBrushSize(float newSize) {
+        float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, newSize, getResources().getDisplayMetrics());
+        currentBrushSize = pixelAmount;
+        canvasPaint.setStrokeWidth(newSize);
+    }
+
+    public void setLastBrushSize(float lastSize) {
+        lastBrushSize=lastSize;
+    }
+
+    public float getLastBrushSize() {
+        return lastBrushSize;
     }
 
 

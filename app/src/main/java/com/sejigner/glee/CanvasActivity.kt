@@ -3,7 +3,9 @@ package com.sejigner.glee
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.View
+import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sejigner.glee.Scroll.isPainting
@@ -15,13 +17,15 @@ object Scroll {
 }
 
 class CanvasActivity : AppCompatActivity() {
-    private var customView: CustomView? = null
+    private var mCustomView: CustomView? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_canvas)
-        customView = findViewById<View>(R.id.customView) as CustomView
+        mCustomView = findViewById<View>(R.id.customView) as CustomView
         val metrics = DisplayMetrics()
+        val seek = findViewById<SeekBar>(R.id.seek_bar_brush_size)
         windowManager.defaultDisplay.getMetrics(metrics)
         /*
         customView!!.doOnLayout {
@@ -33,19 +37,21 @@ class CanvasActivity : AppCompatActivity() {
         btn_toggle_scroll.setOnClickListener {
             if (isPainting) {
                 btn_toggle_scroll.setImageResource(R.drawable.btn_scroll)
-                customView!!.setOnTouchListener { view, event -> // 터치 이벤트 제거 (필사 기능 off)
+                mCustomView!!.setOnTouchListener { view, event -> // 터치 이벤트 제거 (필사 기능 off)
                     true
                 }
                 isPainting = false
             } else {
                 btn_toggle_scroll.setImageResource(R.drawable.btn_draw)
-                customView!!.setOnTouchListener { view, event -> // 터치 이벤트
+                mCustomView!!.setOnTouchListener { view, event -> // 터치 이벤트
                     false
                 }
                 isPainting = true
             }
 
         }
+
+
 
 
         rb_canvas_cafe24SurroundAir.setOnClickListener {
@@ -65,14 +71,41 @@ class CanvasActivity : AppCompatActivity() {
         }
 
         view_btn_undo.setOnClickListener {
-            customView!!.onClickUndo()
+            mCustomView!!.onClickUndo()
         }
 
         view_btn_redo.setOnClickListener {
-            customView!!.onClickRedo()
+            mCustomView!!.onClickRedo()
         }
+        
+        seek?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            var progressChanged = 0
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                progressChanged = progress
+                tv_progress_seek_bar.setText(getString(R.string.draw_thickness, progress))
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                tv_progress_seek_bar.setText(getString(R.string.draw_thickness, seek.progress))
+                progressChanged = seek.progress
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                /*
+                Toast.makeText(this@CanvasActivity,
+                "획 두께가 " + seek.progress + "포인트에요.",
+                Toast.LENGTH_SHORT).show()
+                */
+                tv_progress_seek_bar.setText(getString(R.string.draw_thickness, seek.progress))
+                Log.d("Debug","brush : $progressChanged pt")
+                mCustomView!!.setBrushSize(progressChanged.toFloat())
+                mCustomView!!.setLastBrushSize(progressChanged.toFloat())
+
+
+            }
+        })
 
         Toast.makeText(this, "원하는 글씨체를 선택하고 따라써보세요.", Toast.LENGTH_LONG).show()
-
     }
 }
