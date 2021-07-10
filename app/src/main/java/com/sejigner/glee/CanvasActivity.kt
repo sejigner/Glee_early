@@ -3,19 +3,11 @@ package com.sejigner.glee
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.doOnLayout
 import com.sejigner.glee.Scroll.isPainting
 import kotlinx.android.synthetic.main.activity_canvas.*
-import kotlinx.android.synthetic.main.activity_canvas.tv_arita
-import kotlinx.android.synthetic.main.activity_canvas.tv_cafe24
-import kotlinx.android.synthetic.main.activity_canvas.tv_hambaksnow
-import kotlinx.android.synthetic.main.activity_canvas.tv_mapo
 import kotlinx.android.synthetic.main.fragment_home.*
 
 object Scroll {
@@ -24,8 +16,6 @@ object Scroll {
 
 class CanvasActivity : AppCompatActivity() {
     private var customView: CustomView? = null
-    private var width: Int? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,11 +32,13 @@ class CanvasActivity : AppCompatActivity() {
         */
         btn_toggle_scroll.setOnClickListener {
             if (isPainting) {
+                btn_toggle_scroll.setImageResource(R.drawable.btn_scroll)
                 customView!!.setOnTouchListener { view, event -> // 터치 이벤트 제거 (필사 기능 off)
                     true
                 }
                 isPainting = false
             } else {
+                btn_toggle_scroll.setImageResource(R.drawable.btn_draw)
                 customView!!.setOnTouchListener { view, event -> // 터치 이벤트
                     false
                 }
@@ -56,27 +48,27 @@ class CanvasActivity : AppCompatActivity() {
         }
 
 
-        tv_cafe24.setOnClickListener {
+        rb_canvas_cafe24SurroundAir.setOnClickListener {
             tv_work_canvas.typeface = Typeface.createFromAsset(applicationContext.assets, "fonts/cafe24_surround_air.ttf")
         }
 
-        tv_arita.setOnClickListener {
+        rb_canvas_aritaBuri.setOnClickListener {
             tv_work_canvas.typeface = Typeface.createFromAsset(applicationContext.assets, "fonts/arita_buri.otf")
         }
 
-        tv_mapo.setOnClickListener {
+        rb_canvas_mapoFlowerIsland.setOnClickListener {
             tv_work_canvas.typeface = Typeface.createFromAsset(applicationContext.assets, "fonts/mapo_flower_island.ttf")
         }
 
-        tv_hambaksnow.setOnClickListener {
+        rb_canvas_hambaksnow.setOnClickListener {
             tv_work_canvas.typeface = Typeface.createFromAsset(applicationContext.assets, "fonts/hambaksnow.ttf")
         }
 
-        btn_undo.setOnClickListener {
+        view_btn_undo.setOnClickListener {
             customView!!.onClickUndo()
         }
 
-        btn_redo.setOnClickListener {
+        view_btn_redo.setOnClickListener {
             customView!!.onClickRedo()
         }
 
