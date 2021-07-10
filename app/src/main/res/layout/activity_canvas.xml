@@ -128,8 +128,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.sejigner.glee.PaintView
-                android:id="@+id/paintView"
+            <com.sejigner.glee.CustomView
+                android:id="@+id/customView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="@id/tv_work_canvas"
@@ -142,8 +142,8 @@
         android:id="@+id/cv_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="62dp"
-        android:elevation="0dp"
         android:layout_marginTop="1dp"
+        android:elevation="0dp"
         app:cardBackgroundColor="@color/transparent"
         app:cardCornerRadius="0dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -160,72 +160,89 @@
             card_view:cardElevation="10dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_marginHorizontal="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical">
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="16dp">
 
                 <TextView
-                    android:textSize="16dp"
                     android:id="@+id/tv_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="색상"
+                    android:textSize="16dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    card_view:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintBottom_toBottomOf="parent" />
+
                 <ImageView
                     android:id="@+id/btn_color_change"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    card_view:layout_constraintStart_toEndOf="@id/tv_color"
                     android:layout_marginStart="8dp"
-                    android:src="@drawable/btn_color_change"/>
+                    android:src="@drawable/btn_color_change"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintStart_toEndOf="@id/tv_color" />
 
                 <TextView
+                    android:id="@+id/tv_thickness"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp"
-                    android:text="두께"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    card_view:layout_constraintStart_toEndOf="@+id/btn_color_change"
                     android:layout_marginStart="22dp"
-                    android:id="@+id/tv_thickness"/>
+                    android:text="두께"
+                    android:textSize="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintStart_toEndOf="@+id/btn_color_change" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_thickness_background"
-                    card_view:layout_constraintStart_toEndOf="@id/tv_thickness"
                     android:layout_marginStart="8dp"
-                    card_view:layout_constraintTop_toTopOf="parent"
-                    card_view:layout_constraintBottom_toBottomOf="parent"/>
+                    android:src="@drawable/ic_thickness_background"
+                    card_view:layout_constraintBottom_toBottomOf="parent"
+                    card_view:layout_constraintStart_toEndOf="@id/tv_thickness"
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/btn_undo"
                     android:layout_width="17dp"
                     android:layout_height="17dp"
+                    android:layout_marginEnd="18dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:src="@drawable/btn_undo"
-                    card_view:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintBottom_toBottomOf="parent"
+                    card_view:layout_constraintEnd_toStartOf="@+id/btn_redo"
+                    card_view:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/btn_redo"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginEnd="18dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:src="@drawable/btn_redo"
                     card_view:layout_constraintBottom_toBottomOf="parent"
                     card_view:layout_constraintEnd_toStartOf="@+id/btn_toggle_scroll"
-                    android:layout_marginEnd="18dp"/>
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
 
                 <ImageView
                     android:id="@+id/btn_toggle_scroll"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:layout_width="38dp"
-                    android:layout_height="38dp"
                     android:src="@drawable/btn_scroll"
-                    card_view:layout_constraintTop_toTopOf="parent"
                     card_view:layout_constraintBottom_toBottomOf="parent"
-                    card_view:layout_constraintEnd_toEndOf="parent"/>
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
