@@ -71,12 +71,22 @@ class CanvasActivity : AppCompatActivity() {
         }
 
         view_btn_undo.setOnClickListener {
-            mCustomView!!.onClickUndo()
+            btn_undo.performClick()
+            btn_undo.setPressed(true)
+            btn_undo.invalidate()
+            btn_undo.setPressed(false)
+            btn_undo.invalidate()
         }
+        btn_undo.setOnClickListener { mCustomView!!.onClickUndo() }
 
         view_btn_redo.setOnClickListener {
-            mCustomView!!.onClickRedo()
+            btn_redo.performClick()
+            btn_redo.setPressed(true)
+            btn_redo.invalidate()
+            btn_redo.setPressed(false)
+            btn_redo.invalidate()
         }
+        btn_redo.setOnClickListener { mCustomView!!.onClickRedo() }
         
         seek?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             var progressChanged = 0

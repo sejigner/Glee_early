@@ -3,17 +3,12 @@ package com.sejigner.glee;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
-
-import androidx.annotation.Nullable;
-
-import java.sql.Array;
 import java.util.ArrayList;
 
 
@@ -26,9 +21,11 @@ public class CustomView extends View {
     private int paintColor = 0xFF00FF0C;
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
+    private int currentColor;
+    private int strokeWidth;
     private float currentBrushSize, lastBrushSize;
-    private ArrayList<Path> paths = new ArrayList<Path>();
-    private ArrayList<Path> undonePaths = new ArrayList<Path>();
+    private ArrayList<Stroke> paths = new ArrayList<>();
+    private ArrayList<Stroke> undonePaths = new ArrayList<>();
 
     public CustomView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -38,11 +35,13 @@ public class CustomView extends View {
     private void init() {
         currentBrushSize = getResources().getInteger(R.integer.medium_size);
         lastBrushSize = currentBrushSize;
-
+        currentColor = paintColor;
+        strokeWidth = 20;
         drawPath = new Path();
         drawPaint = new Paint();
         drawPaint.setColor(paintColor);
         drawPaint.setAntiAlias(true);
+        drawPaint.setDither(true);
         drawPaint.setStrokeWidth(currentBrushSize);
         drawPaint.setStyle(Paint.Style.STROKE);
         drawPaint.setStrokeJoin(Paint.Join.ROUND);
@@ -54,8 +53,10 @@ public class CustomView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         getParent().requestDisallowInterceptTouchEvent(true);
-        for (Path p : paths) {
-            canvas.drawPath(p, drawPaint);
+        for (Stroke p : paths) {
+            drawPaint.setColor(p.color);
+            drawPaint.setStrokeWidth(p.strokeWidth);
+            canvas.drawPath(p.path, drawPaint);
         }
         canvas.drawPath(drawPath, drawPaint);
 
@@ -100,8 +101,9 @@ public class CustomView extends View {
     private void touch_up() {
         drawPath.lineTo(mX, mY);
         drawCanvas.drawPath(drawPath, drawPaint);
-        paths.add(drawPath);
+        // paths.add(drawPath);
         drawPath = new Path();
+
     }
 
     private void touch_move(float x, float y) {
@@ -115,6 +117,9 @@ public class CustomView extends View {
     }
 
     private void touch_start(float x, float y) {
+        Stroke fp = new Stroke(currentColor, strokeWidth, drawPath);
+        paths.add(fp);
+
         undonePaths.clear();
         drawPath.reset();
         drawPath.moveTo(x, y);
@@ -140,7 +145,7 @@ public class CustomView extends View {
     public void setBrushSize(float newSize) {
         float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, newSize, getResources().getDisplayMetrics());
         currentBrushSize = pixelAmount;
-        canvasPaint.setStrokeWidth(newSize);
+        strokeWidth = (int)newSize;
     }
 
     public void setLastBrushSize(float lastSize) {
@@ -151,5 +156,8 @@ public class CustomView extends View {
         return lastBrushSize;
     }
 
+    public void setColor(int color) {
+        currentColor = color;
+    }
 
 }
