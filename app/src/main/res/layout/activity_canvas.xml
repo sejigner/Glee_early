@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/btn_canvas_back"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
@@ -206,12 +207,22 @@
                 <ImageView
                     android:id="@+id/btn_color_change"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="8dp"
-                    android:src="@drawable/btn_color_change"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_height="0dp"
+                    android:src="@drawable/btn_color_change_new"
+                    android:adjustViewBounds="true"
+                    android:layout_marginStart="4dp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_color"
+                    app:layout_constraintTop_toTopOf="@id/tv_color"
                     card_view:layout_constraintStart_toEndOf="@id/tv_color" />
+
+                <View
+                    android:id="@+id/view_btn_color"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    card_view:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintBottom_toBottomOf="parent"
+                    card_view:layout_constraintStart_toStartOf="@id/tv_color"
+                    card_view:layout_constraintEnd_toStartOf="@id/tv_thickness"/>
 
                 <TextView
                     android:id="@+id/tv_thickness"
@@ -232,7 +243,7 @@
                     android:textSize="16dp"
                     android:text="20"
                     android:textColor="#646464"
-                    android:layout_marginStart="6dp"
+                    android:layout_marginStart="4dp"
                     card_view:layout_constraintStart_toEndOf="@id/tv_thickness"
                     card_view:layout_constraintEnd_toStartOf="@+id/dp"
                     card_view:layout_constraintTop_toTopOf="parent"
@@ -253,11 +264,12 @@
                     android:min="1"
                     android:progress="20"
                     android:id="@+id/seek_bar_brush_size"
-                    android:layout_width="120dp"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_thickness_background"
                     card_view:layout_constraintBottom_toBottomOf="parent"
                     card_view:layout_constraintStart_toEndOf="@id/dp"
+                    card_view:layout_constraintEnd_toStartOf="@id/view_btn_undo"
                     card_view:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView

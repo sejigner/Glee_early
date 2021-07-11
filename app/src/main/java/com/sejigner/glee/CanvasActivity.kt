@@ -1,5 +1,7 @@
 package com.sejigner.glee
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -11,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sejigner.glee.Scroll.isPainting
 import kotlinx.android.synthetic.main.activity_canvas.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import petrov.kristiyan.colorpicker.ColorPicker
+import petrov.kristiyan.colorpicker.ColorPicker.OnFastChooseColorListener
+
 
 object Scroll {
     var isPainting: Boolean = true
@@ -18,14 +23,16 @@ object Scroll {
 
 class CanvasActivity : AppCompatActivity() {
     private var mCustomView: CustomView? = null
-
+    private var colorList = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_canvas)
         mCustomView = findViewById<View>(R.id.customView) as CustomView
+        setColorList()
         val metrics = DisplayMetrics()
         val seek = findViewById<SeekBar>(R.id.seek_bar_brush_size)
+
         windowManager.defaultDisplay.getMetrics(metrics)
         /*
         customView!!.doOnLayout {
@@ -34,6 +41,8 @@ class CanvasActivity : AppCompatActivity() {
             customView!!.init(width, height)
         }
         */
+        Toast.makeText(this, "원하는 글씨체를 선택하고 따라써보세요.", Toast.LENGTH_LONG).show()
+
         btn_toggle_scroll.setOnClickListener {
             if (isPainting) {
                 btn_toggle_scroll.setImageResource(R.drawable.btn_scroll)
@@ -51,7 +60,9 @@ class CanvasActivity : AppCompatActivity() {
 
         }
 
-
+        btn_canvas_back.setOnClickListener {
+            onBackPressed()
+        }
 
 
         rb_canvas_cafe24SurroundAir.setOnClickListener {
@@ -87,6 +98,31 @@ class CanvasActivity : AppCompatActivity() {
             btn_redo.invalidate()
         }
         btn_redo.setOnClickListener { mCustomView!!.onClickRedo() }
+
+        btn_color_change.setOnClickListener {
+            val colorPicker = ColorPicker(this@CanvasActivity)
+            colorPicker.setOnFastChooseColorListener(object : OnFastChooseColorListener {
+                override fun setOnFastChooseColorListener(position: Int, color: Int) {
+                    // get the integer value of color
+                    // selected from the dialog box and
+                    // set it as the stroke color
+                    customView.setColor(color)
+                    btn_color_change.setColorFilter(color)
+                }
+
+                override fun onCancel() {
+                    colorPicker.dismissDialog()
+                }
+            }) // set the number of color columns
+                // you want  to show in dialog.
+                .setColumns(4) // set a default color selected
+                // in the dialog
+                .setColors(colorList)
+                .setRoundColorButton(true)
+                .setTitle("필사에 이용할 잉크 색을 골라주세요!")
+                .show()
+        }
+        view_btn_color.setOnClickListener { btn_color_change.performClick()  }
         
         seek?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             var progressChanged = 0
@@ -115,7 +151,27 @@ class CanvasActivity : AppCompatActivity() {
 
             }
         })
+    }
 
-        Toast.makeText(this, "원하는 글씨체를 선택하고 따라써보세요.", Toast.LENGTH_LONG).show()
+    private fun setColorList() {
+        colorList.add("#000000")
+        colorList.add("#FFFFFF")
+        colorList.add("#FF7777")
+        colorList.add("#FFA427")
+        colorList.add("#B7E831")
+        colorList.add("#74A9FF")
+        colorList.add("#2B45D6")
+        colorList.add("#7C55FF")
+        colorList.add("#FFCD93")
+        colorList.add("#00ED52")
+        colorList.add("#74DFFF")
+        colorList.add("#ACACF8")
+        colorList.add("#1F1F1F")
+        colorList.add("#404040")
+        colorList.add("#797979")
+        colorList.add("#C4C4C4")
+        Log.d("colorPicker","color check-the last color: "+colorList.get(15))
+
+
     }
 }
