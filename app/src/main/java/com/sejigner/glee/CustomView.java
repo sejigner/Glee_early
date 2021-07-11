@@ -59,7 +59,6 @@ public class CustomView extends View {
             canvas.drawPath(p.path, drawPaint);
         }
         canvas.drawPath(drawPath, drawPaint);
-
     }
 
     @Override

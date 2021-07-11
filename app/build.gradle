@@ -51,6 +51,7 @@ dependencies {
     implementation 'petrov.kristiyan:colorpicker-library:1.1.10'
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'petrov.kristiyan:colorpicker-library:1.1.10'
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
 
 }
