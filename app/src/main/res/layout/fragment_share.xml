@@ -15,6 +15,7 @@
 
             <LinearLayout
                 android:paddingTop="28dp"
+                android:paddingBottom="6dp"
                 android:background="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +45,7 @@
 
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
 
                             <LinearLayout
@@ -67,7 +68,8 @@
                             <androidx.cardview.widget.CardView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="10dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="4dp"
                                 app:cardCornerRadius="10dp">
 
                                 <ImageView
@@ -82,7 +84,9 @@
 
 
                             <LinearLayout
+                                android:layout_marginTop="4dp"
                                 android:layout_marginVertical="6dp"
+                                android:layout_marginEnd="8dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:orientation="horizontal">
@@ -93,7 +97,10 @@
                                     android:layout_height="wrap_content"
                                     android:ellipsize="end"
                                     android:text="이별은 미의 창조라는 한용운 시인의 작품..." />
-
+                                <View
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"/>
                                 <ImageView
                                     android:layout_gravity="end"
                                     android:layout_width="wrap_content"
