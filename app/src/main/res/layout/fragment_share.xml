@@ -65,54 +65,19 @@
                             </LinearLayout>
 
                             <androidx.cardview.widget.CardView
-                                android:layout_width="240dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="10dp"
-                                app:cardBackgroundColor="#60213123"
                                 app:cardCornerRadius="10dp">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical"
-                                    android:padding="20dp">
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal">
-
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginBottom="10dp"
-                                            android:fontFamily="@font/hambaksnow"
-                                            android:singleLine="true"
-                                            android:text="이별은 미의 창조"
-                                            android:textSize="14sp" />
-
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginStart="4dp"
-                                            android:layout_marginBottom="10dp"
-                                            android:fontFamily="@font/hambaksnow"
-                                            android:singleLine="true"
-                                            android:text="한용운"
-                                            android:textSize="10sp" />
-
-                                    </LinearLayout>
-
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/hambaksnow"
-                                        android:lineSpacingExtra="4dp"
-                                        android:text="이별은 미의 창조입니다\n이별의 미는 아침의 바람 없는 황금과 밤의 올 없는 비단과 죽음 없는 영원의 생명과 시들지 않는 하늘의 푸른 꽃에도 없습니다 님이여 이별이 아니면 나는 눈물에서 죽었다가 웃음에서 다시 살아날 수가 없습니다 오오 이별이여 미는 이별의 창조입니다"
-                                        android:textSize="10dp" />
-                                </LinearLayout>
-
+                                <ImageView
+                                    android:scaleType="fitXY"
+                                    android:id="@+id/iv_work_exam_1"
+                                    android:src="@drawable/work_exam"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="240dp"
+                                    android:adjustViewBounds="true"
+                                    android:orientation="vertical"/>
                             </androidx.cardview.widget.CardView>
 
 
@@ -127,7 +92,7 @@
                                     android:layout_width="220dp"
                                     android:layout_height="wrap_content"
                                     android:ellipsize="end"
-                                    android:text="이별은 미의 창조라는 한용운 시인의 작품... 이별이 아니면" />
+                                    android:text="이별은 미의 창조라는 한용운 시인의 작품..." />
 
                                 <ImageView
                                     android:layout_gravity="end"
@@ -163,27 +128,19 @@
                             </LinearLayout>
 
                             <androidx.cardview.widget.CardView
-                                android:layout_width="300dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="10dp"
-                                app:cardBackgroundColor="#F3EA9C"
                                 app:cardCornerRadius="10dp">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
+                                <ImageView
+                                    android:id="@+id/iv_work_exam_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="240dp"
+                                    android:src="@drawable/work_exam2"
+                                    android:adjustViewBounds="true"
                                     android:orientation="vertical"
-                                    android:padding="20dp">
-
-                                    <TextView
-
-                                        android:fontFamily="@font/mapo_flower_island"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:text="기말고사가 끝나고 여름 방학이 시작되었다. 적성에 맞지 않는 전공을 공부하느라 너무 힘들었던 시간이 지나가고 찾아온 이 자유가 너무 달콤하다. 잠시 여유롭...
-\n\n6월의 기록\n(06.23)"
-                                        android:textSize="14dp" />
-                                </LinearLayout>
+                                    />
 
                             </androidx.cardview.widget.CardView>
 

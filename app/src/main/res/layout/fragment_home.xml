@@ -161,6 +161,7 @@
 
 
                 <TextView
+                    android:fontFamily="@font/hambaksnow"
                     android:id="@+id/tv_work_example"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

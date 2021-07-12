@@ -7,16 +7,24 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.sejigner.glee.GridItemDecoration
-import com.sejigner.glee.R
-import com.sejigner.glee.WorkListStaggeredAdapter
-import com.sejigner.glee.WorkModel
+import com.sejigner.glee.*
 import kotlinx.android.synthetic.main.fragment_share.*
+import kotlinx.android.synthetic.main.list_item_grid_work.view.*
 
 open class FragmentShare : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
             : View? {
         return inflater.inflate(R.layout.fragment_share, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setWorkExam()
+    }
+
+    private fun setWorkExam() {
+        GlideApp.with(this).load(R.drawable.work_exam).into(iv_work_exam_1)
+        GlideApp.with(this).load(R.drawable.work_exam2).into(iv_work_exam_2)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
