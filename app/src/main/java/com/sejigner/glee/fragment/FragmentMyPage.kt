@@ -49,6 +49,7 @@ class FragmentMyPage : Fragment() {
         workListAdapter.setWorkList(generateDummyData())
     }
 
+
     private fun generateDummyData(): List<WorkModelMyPage> {
         val listOfCurrentWork = mutableListOf<WorkModelMyPage>()
 

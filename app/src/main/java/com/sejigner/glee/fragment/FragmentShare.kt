@@ -35,11 +35,17 @@ open class FragmentShare : Fragment() {
     }
 
     private fun initView() {
+/*
+        rv_work.layoutManager = StaggeredGridLayoutManager(2, 1).apply {
+            gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
+            orientation = StaggeredGridLayoutManager.VERTICAL
+        }
+        rv_work.setHasFixedSize(true)
 
-        rv_work.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+ */
         //This will for default android divider
         rv_work.addItemDecoration(GridItemDecoration(10, 2))
-
+        // rv_work.layoutManager
         val workListAdapter = WorkListStaggeredAdapter()
         rv_work.adapter = workListAdapter
         workListAdapter.setWorkList(generateDummyData())
