@@ -3,14 +3,14 @@
     package="com.sejigner.glee">
 
     <application
-        android:hardwareAccelerated="false"
+        android:hardwareAccelerated="true"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher_glee"
+        android:icon="@drawable/ic_launcher_glee_vector"
         android:label="@string/app_name_kor"
-        android:roundIcon="@mipmap/ic_launcher_glee"
+        android:roundIcon="@drawable/ic_launcher_glee_vector"
         android:supportsRtl="true"
         android:theme="@style/Theme.Glee">
-        <activity android:name=".CanvasActivity"></activity>
+        <activity android:name=".CanvasActivity" android:hardwareAccelerated="false"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

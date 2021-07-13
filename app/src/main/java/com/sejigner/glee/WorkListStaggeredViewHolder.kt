@@ -12,8 +12,8 @@ class WorkListStaggeredViewHolder(itemView: View) : RecyclerView.ViewHolder(item
     fun bindView(workModel: WorkModel) {
         itemView.tv_writer_name.text = workModel.userName
         itemView.tv_count_like.text = workModel.likeCount.toString()
-        GlideApp.with(itemView.context).load(workModel.workPicture!!).into(itemView.iv_work)
-        GlideApp.with(itemView.context).load(workModel.userPicture!!).into(itemView.iv_writer_image)
-        GlideApp.with(itemView.context).load(workModel.likeIcon!!).into(itemView.iv_like)
+        GlideApp.with(itemView.context).load(workModel.workPicture).into(itemView.iv_work)
+        GlideApp.with(itemView.context).load(workModel.userPicture).into(itemView.iv_writer_image)
+        GlideApp.with(itemView.context).load(workModel.likeIcon).into(itemView.iv_like)
     }
 }

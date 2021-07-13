@@ -1,19 +1,13 @@
 package com.sejigner.glee.fragment
 
-import android.app.Activity
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.sejigner.glee.*
 import kotlinx.android.synthetic.main.fragment_share.*
-import kotlinx.android.synthetic.main.list_item_grid_work.view.*
 
 open class FragmentShare : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
@@ -23,17 +17,21 @@ open class FragmentShare : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setWorkExam()
+        setImageSample()
     }
 
-    private fun setWorkExam() {
-        GlideApp.with(this).load(R.drawable.work_exam).into(iv_work_exam_1)
-        GlideApp.with(this).load(R.drawable.work_exam2).into(iv_work_exam_2)
-    }
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initView()
+    }
+
+    private fun setImageSample() {
+        GlideApp.with(this).load(R.drawable.work_exam).into(iv_work_exam_1)
+        GlideApp.with(this).load(R.drawable.work_exam2).into(iv_work_exam_2)
+        GlideApp.with(this).load(R.drawable.sample_user_1).circleCrop().into(iv_sample_user_picture_1)
+        GlideApp.with(this).load(R.drawable.sample_user_2).circleCrop().into(iv_sample_user_picture_2)
     }
 
     private fun initView() {
@@ -50,29 +48,31 @@ open class FragmentShare : Fragment() {
     private fun generateDummyData(): List<WorkModel> {
         val listOfWork = mutableListOf<WorkModel>()
 
-        var workModel = WorkModel("지멘", 128,R.drawable.exam_1 , R.drawable.ic_my_page)
+        var workModel = WorkModel("지멘", 128, R.drawable.exam_1, R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 128, R.drawable.exam_2, R.drawable.ic_my_page)
+        workModel = WorkModel("보석", 11, R.drawable.exam_2, R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, R.drawable.exam_3, R.drawable.ic_my_page)
+        workModel = WorkModel("배준수", 29, R.drawable.exam_3, R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.ic_my_page)
+        workModel = WorkModel("흰둥", 98, R.drawable.exam_4, R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, R.drawable.exam_3, R.drawable.ic_my_page)
+        workModel = WorkModel("여의도", 30, R.drawable.exam_5, R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, R.drawable.exam_1, R.drawable.ic_my_page)
+        workModel = WorkModel("혜승", 56, R.drawable.current_work_sample_my_page2, R.drawable.ic_my_page)
         listOfWork.add(workModel)
-        workModel = WorkModel("지멘", 128, R.drawable.girl, R.drawable.ic_my_page)
+        workModel = WorkModel("성북", 7, R.drawable.work_sample_my_page2, R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
 
 
         return listOfWork
     }
+
+
 
 }

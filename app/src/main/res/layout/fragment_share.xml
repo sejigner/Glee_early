@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
-
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
@@ -53,17 +53,20 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="4dp"
+                                android:gravity="center_vertical"
                                 android:orientation="horizontal">
 
                                 <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:id="@+id/iv_sample_user_picture_1"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
                                     android:src="@drawable/ic_my_page" />
 
                                 <TextView
+                                    android:textColor="@color/black"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="호기" />
+                                    android:text="진" />
                             </LinearLayout>
 
                             <androidx.cardview.widget.CardView
@@ -71,7 +74,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="8dp"
                                 android:layout_marginBottom="4dp"
-                                app:cardCornerRadius="10dp">
+                                app:cardCornerRadius="20dp">
 
                                 <ImageView
                                     android:id="@+id/iv_work_exam_1"
@@ -93,6 +96,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
+                                    android:textColor="@color/black"
                                     android:layout_width="220dp"
                                     android:layout_height="wrap_content"
                                     android:ellipsize="end"
@@ -121,17 +125,19 @@
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
-
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="4dp"
+                                android:gravity="center_vertical"
                                 android:orientation="horizontal">
 
                                 <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:id="@+id/iv_sample_user_picture_2"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
                                     android:src="@drawable/ic_my_page" />
 
                                 <TextView
+                                    android:textColor="@color/black"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="지멘" />
@@ -141,7 +147,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="10dp"
-                                app:cardCornerRadius="10dp">
+                                android:layout_marginBottom="4dp"
+                                app:cardCornerRadius="20dp">
 
                                 <ImageView
                                     android:id="@+id/iv_work_exam_2"
@@ -161,6 +168,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
+                                    android:textColor="@color/black"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -177,12 +185,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:background="#DDDDDD"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="16dp"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:background="#DDDDDD"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -211,21 +219,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="최신"
-                        android:textStyle="bold
-" />
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_work"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:overScrollMode="never"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
