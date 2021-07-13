@@ -5,21 +5,22 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
-import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnLayout
 import kotlinx.android.synthetic.main.activity_canvas.*
-import kotlinx.android.synthetic.main.activity_canvas.tv_hambaksnow
-import kotlinx.android.synthetic.main.activity_canvas.tv_cafe24
 import kotlinx.android.synthetic.main.activity_canvas.tv_arita
+import kotlinx.android.synthetic.main.activity_canvas.tv_cafe24
+import kotlinx.android.synthetic.main.activity_canvas.tv_hambaksnow
 import kotlinx.android.synthetic.main.activity_canvas.tv_mapo
 import kotlinx.android.synthetic.main.fragment_home.*
 
+
 class CanvasActivity : AppCompatActivity() {
     private var paintView: PaintView? = null
-    private var width : Int? = null
+    private var isScrollable : Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,8 @@ class CanvasActivity : AppCompatActivity() {
             var height = it.measuredHeight
             paintView!!.init(width, height)
         }
+        // let the paintView call touch event of itself
+        sv_work.requestDisallowInterceptTouchEvent(true)
 
         tv_cafe24.setOnClickListener {
             tv_work_canvas.typeface = Typeface.createFromAsset(applicationContext.assets, "fonts/cafe24_surround_air.ttf")
@@ -49,8 +52,20 @@ class CanvasActivity : AppCompatActivity() {
             tv_work_canvas.typeface = Typeface.createFromAsset(applicationContext.assets, "fonts/hambaksnow.ttf")
         }
 
+        tv_switch_scroll.setOnClickListener {
+            if(isScrollable)
+            sv_work.requestDisallowInterceptTouchEvent(false)
+            else sv_work.requestDisallowInterceptTouchEvent(true)
+        }
+
+
         Toast.makeText(this,"원하는 글씨체를 선택하고 따라써보세요.", Toast.LENGTH_LONG).show()
 
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        return super.onTouchEvent(event)
+        return true
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

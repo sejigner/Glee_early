@@ -46,6 +46,19 @@
             android:gravity="center"
             android:text="저장"
             android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tv_switch_scroll"
+            android:layout_width="58dp"
+            android:layout_height="32dp"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/btn_new_transcription"
+            android:layout_marginStart="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="스크롤"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -103,7 +116,7 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/sv_work"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -134,7 +147,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/tv_work_canvas"
                 app:layout_constraintTop_toTopOf="@id/tv_work_canvas" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
