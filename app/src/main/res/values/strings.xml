@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Glee</string>
+    <string name="app_name_kor">글리</string>
     <string name="work_example">계절이 지나가는 하늘에는\n가을로 가득 차 있습니다.\n나는 아무 걱정도 없이\n가을 속의 별들을 \n다 헤일 듯합니다...</string>
     <string name="work_canvas">
         계절이 지나가는 하늘에는 가을로 가득 차 있습니다. 나는 아무 걱정도 없이 가을 속의 별들을 다 헤일 듯합니다. 가슴 속에 하나 둘 새겨지는 별을
@@ -41,4 +42,9 @@
         \n
 
     </string>
+    <string name="font_hambaksnow">함박눈</string>
+    <string name="font_mapoFlowerIsland">마포꽃섬</string>
+    <string name="font_cafe24SurroundAir">카페24 써라운드에어</string>
+    <string name="font_aritaBuri">아리따 부리</string>
+    <string name="draw_thickness">%d</string>
 </resources>

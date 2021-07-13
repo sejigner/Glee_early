@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/btn_canvas_back"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
@@ -70,57 +71,85 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/canvas_title">
 
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/rg_fonts"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_gravity="center_vertical"
-            android:gravity="center_vertical">
+            android:layout_marginStart="26dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_hambaksnow"
+            <RadioButton
+                android:id="@+id/rb_canvas_hambaksnow"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/radio_flat_selector"
+                android:button="@color/transparent"
+                android:checked="true"
                 android:fontFamily="@font/hambaksnow"
-                android:text="함박눈"
+                android:gravity="center"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:text="@string/font_hambaksnow"
+                android:textColor="@drawable/radio_flat_text_selector"
                 android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/tv_cafe24"
+            <RadioButton
+                android:id="@+id/rb_canvas_mapoFlowerIsland"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="26sp"
-                android:fontFamily="@font/cafe24_surround_air"
-                android:text="카페24 써라운드에어"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tv_arita"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:fontFamily="@font/arita_buri"
-                android:text="아리따부리"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tv_mapo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/radio_flat_selector"
+                android:button="@color/transparent"
                 android:fontFamily="@font/mapo_flower_island"
-                android:text="마포꽃섬"
+                android:gravity="center"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:text="@string/font_mapoFlowerIsland"
+                android:textColor="@drawable/radio_flat_text_selector"
                 android:textSize="18sp" />
 
+            <RadioButton
+                android:id="@+id/rb_canvas_cafe24SurroundAir"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/radio_flat_selector"
+                android:button="@color/transparent"
+                android:fontFamily="@font/cafe24_surround_air"
+                android:gravity="center"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:text="@string/font_cafe24SurroundAir"
+                android:textColor="@drawable/radio_flat_text_selector"
+                android:textSize="18sp" />
 
-        </LinearLayout>
+            <RadioButton
+                android:id="@+id/rb_canvas_aritaBuri"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/radio_flat_selector"
+                android:button="@color/transparent"
+                android:fontFamily="@font/arita_buri"
+                android:gravity="center"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:text="@string/font_aritaBuri"
+                android:textColor="@drawable/radio_flat_text_selector"
+                android:textSize="18sp" />
+
+        </RadioGroup>
+
     </HorizontalScrollView>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/sv_work"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/sv_fonts">
+        app:layout_constraintTop_toBottomOf="@id/cv_tool_bar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -130,8 +159,9 @@
                 android:id="@+id/tv_work_canvas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/cafe24_surround_air"
+                android:fontFamily="@font/hambaksnow"
                 android:gravity="center_horizontal"
                 android:lineSpacingExtra="20dp"
                 android:text="@string/work_canvas"
@@ -140,14 +170,182 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.sejigner.glee.PaintView
-                android:id="@+id/paintView"
+            <com.sejigner.glee.CustomView
+                android:id="@+id/customView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="@id/tv_work_canvas"
                 app:layout_constraintTop_toTopOf="@id/tv_work_canvas" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_marginTop="1dp"
+        android:elevation="0dp"
+        app:cardBackgroundColor="@color/transparent"
+        app:cardCornerRadius="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sv_fonts">
+
+        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="3dp"
+            android:paddingHorizontal="16dp"
+            app:cardCornerRadius="8dp"
+            card_view:cardBackgroundColor="#4099A2D3"
+            card_view:cardElevation="10dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="16dp">
+
+                <TextView
+                    android:id="@+id/tv_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="색상"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintBottom_toBottomOf="parent" />
+
+                <ImageView
+                    android:id="@+id/btn_color_change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:src="@drawable/btn_color_change_new"
+                    android:adjustViewBounds="true"
+                    android:layout_marginStart="4dp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_color"
+                    app:layout_constraintTop_toTopOf="@id/tv_color"
+                    card_view:layout_constraintStart_toEndOf="@id/tv_color" />
+
+                <View
+                    android:id="@+id/view_btn_color"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    card_view:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintBottom_toBottomOf="parent"
+                    card_view:layout_constraintStart_toStartOf="@id/tv_color"
+                    card_view:layout_constraintEnd_toStartOf="@id/tv_thickness"/>
+
+                <TextView
+                    android:id="@+id/tv_thickness"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="두께"
+                    android:textSize="16dp"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintStart_toEndOf="@+id/btn_color_change" />
+
+                <TextView
+                    android:id="@+id/tv_progress_seek_bar"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="20"
+                    android:textColor="#646464"
+                    android:layout_marginStart="4dp"
+                    card_view:layout_constraintStart_toEndOf="@id/tv_thickness"
+                    card_view:layout_constraintEnd_toStartOf="@+id/dp"
+                    card_view:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintBottom_toBottomOf="parent"/>
+                <TextView
+                    android:id="@+id/dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="dp"
+                    card_view:layout_constraintStart_toEndOf="@id/tv_progress_seek_bar"
+                    card_view:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintBottom_toBottomOf="parent"/>
+
+                <SeekBar
+                    android:thumb="@drawable/seekbar_brush_size_thumb"
+                    android:progressDrawable="@drawable/seekbar_brush_size_bar"
+                    android:max="40"
+                    android:min="1"
+                    android:progress="20"
+                    android:id="@+id/seek_bar_brush_size"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_thickness_background"
+                    card_view:layout_constraintBottom_toBottomOf="parent"
+                    card_view:layout_constraintStart_toEndOf="@id/dp"
+                    card_view:layout_constraintEnd_toStartOf="@id/view_btn_undo"
+                    card_view:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/btn_undo"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="20dp"
+                    android:adjustViewBounds="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:src="@drawable/btn_undo"
+                    card_view:layout_constraintBottom_toBottomOf="parent"
+                    card_view:layout_constraintEnd_toStartOf="@+id/btn_redo"
+                    card_view:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/btn_redo"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:layout_marginEnd="18dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:src="@drawable/btn_redo"
+                    card_view:layout_constraintBottom_toBottomOf="parent"
+                    card_view:layout_constraintEnd_toStartOf="@+id/btn_toggle_scroll"
+                    card_view:layout_constraintTop_toTopOf="parent" />
+
+
+                <View
+                    android:id="@+id/view_btn_redo"
+                    card_view:layout_constraintEnd_toEndOf="@id/btn_redo"
+                    android:layout_width="38dp"
+                    card_view:layout_constraintStart_toStartOf="@id/btn_redo"
+                    android:layout_height="match_parent">
+                </View>
+
+                <View
+                    android:id="@+id/view_btn_undo"
+                    card_view:layout_constraintEnd_toEndOf="@id/btn_undo"
+                    android:layout_width="38dp"
+                    card_view:layout_constraintStart_toStartOf="@id/btn_undo"
+                    android:layout_height="match_parent">
+                </View>
+
+                <ImageView
+                    android:id="@+id/btn_toggle_scroll"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:src="@drawable/btn_draw"
+                    card_view:layout_constraintBottom_toBottomOf="parent"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

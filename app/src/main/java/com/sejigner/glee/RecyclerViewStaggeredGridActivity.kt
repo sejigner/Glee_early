@@ -27,22 +27,22 @@ class RecyclerViewStaggeredGridActivity : FragmentShare() {
     private fun generateDummyData(): List<WorkModel> {
         val listOfWork = mutableListOf<WorkModel>()
 
-        var workModel = WorkModel("지멘", 128, R.drawable.girl, R.drawable.girl)
+        var workModel = WorkModel("지멘", 128, R.drawable.girl, R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("지멘", 128, R.drawable.girl, R.drawable.girl)
+        workModel = WorkModel("지멘", 128, R.drawable.girl, R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 128, R.drawable.girl, R.drawable.girl)
+        workModel = WorkModel("뮌스터", 128, R.drawable.girl, R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.girl)
+        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.girl)
+        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.girl)
+        workModel = WorkModel("뮌스터", 298, R.drawable.girl, R.drawable.ic_my_page)
         listOfWork.add(workModel)
 
         return listOfWork

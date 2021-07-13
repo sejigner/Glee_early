@@ -1,98 +1,176 @@
 package com.sejigner.glee
-
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.view.Menu
-import android.view.MenuItem
-import android.view.MotionEvent
+import android.util.Log
 import android.view.View
+import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.doOnLayout
+import com.sejigner.glee.Scroll.isPainting
 import kotlinx.android.synthetic.main.activity_canvas.*
-import kotlinx.android.synthetic.main.activity_canvas.tv_arita
-import kotlinx.android.synthetic.main.activity_canvas.tv_cafe24
-import kotlinx.android.synthetic.main.activity_canvas.tv_hambaksnow
-import kotlinx.android.synthetic.main.activity_canvas.tv_mapo
 import kotlinx.android.synthetic.main.fragment_home.*
+import petrov.kristiyan.colorpicker.ColorPicker
+import petrov.kristiyan.colorpicker.ColorPicker.OnFastChooseColorListener
 
+
+object Scroll {
+    var isPainting: Boolean = true
+}
 
 class CanvasActivity : AppCompatActivity() {
-    private var paintView: PaintView? = null
-    private var isScrollable : Boolean = true
+    private var mCustomView: CustomView? = null
+    private var colorList = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_canvas)
-        paintView = findViewById<View>(R.id.paintView) as PaintView
+        mCustomView = findViewById<View>(R.id.customView) as CustomView
+        setColorList()
         val metrics = DisplayMetrics()
+        val seek = findViewById<SeekBar>(R.id.seek_bar_brush_size)
+
         windowManager.defaultDisplay.getMetrics(metrics)
-        paintView!!.doOnLayout {
+        /*
+        customView!!.doOnLayout {
             var width = it.measuredWidth
             var height = it.measuredHeight
-            paintView!!.init(width, height)
+            customView!!.init(width, height)
         }
-        // let the paintView call touch event of itself
-        sv_work.requestDisallowInterceptTouchEvent(true)
+        */
+        Toast.makeText(this, "원하는 글씨체를 선택하고 따라써보세요.", Toast.LENGTH_LONG).show()
 
-        tv_cafe24.setOnClickListener {
+        btn_toggle_scroll.setOnClickListener {
+            if (isPainting) {
+                btn_toggle_scroll.setImageResource(R.drawable.btn_scroll)
+                mCustomView!!.setOnTouchListener { view, event -> // 터치 이벤트 제거 (필사 기능 off)
+                    true
+                }
+                isPainting = false
+            } else {
+                btn_toggle_scroll.setImageResource(R.drawable.btn_draw)
+                mCustomView!!.setOnTouchListener { view, event -> // 터치 이벤트
+                    false
+                }
+                isPainting = true
+            }
+
+        }
+
+        btn_canvas_back.setOnClickListener {
+            onBackPressed()
+        }
+
+
+        rb_canvas_cafe24SurroundAir.setOnClickListener {
             tv_work_canvas.typeface = Typeface.createFromAsset(applicationContext.assets, "fonts/cafe24_surround_air.ttf")
         }
 
-        tv_arita.setOnClickListener {
+        rb_canvas_aritaBuri.setOnClickListener {
             tv_work_canvas.typeface = Typeface.createFromAsset(applicationContext.assets, "fonts/arita_buri.otf")
         }
 
-        tv_mapo.setOnClickListener {
+        rb_canvas_mapoFlowerIsland.setOnClickListener {
             tv_work_canvas.typeface = Typeface.createFromAsset(applicationContext.assets, "fonts/mapo_flower_island.ttf")
         }
 
-        tv_hambaksnow.setOnClickListener {
+        rb_canvas_hambaksnow.setOnClickListener {
             tv_work_canvas.typeface = Typeface.createFromAsset(applicationContext.assets, "fonts/hambaksnow.ttf")
         }
 
-        tv_switch_scroll.setOnClickListener {
-            if(isScrollable)
-            sv_work.requestDisallowInterceptTouchEvent(false)
-            else sv_work.requestDisallowInterceptTouchEvent(true)
+        view_btn_undo.setOnClickListener {
+            btn_undo.performClick()
+            btn_undo.setPressed(true)
+            btn_undo.invalidate()
+            btn_undo.setPressed(false)
+            btn_undo.invalidate()
         }
+        btn_undo.setOnClickListener { mCustomView!!.onClickUndo() }
 
-
-        Toast.makeText(this,"원하는 글씨체를 선택하고 따라써보세요.", Toast.LENGTH_LONG).show()
-
-    }
-
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        return super.onTouchEvent(event)
-        return true
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.main, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.normal -> {
-                paintView!!.normal()
-                return true
-            }
-            R.id.emboss -> {
-                paintView!!.emboss()
-                return true
-            }
-            R.id.blur -> {
-                paintView!!.blur()
-                return true
-            }
-            R.id.clear -> {
-                paintView!!.clear()
-                return true
-            }
+        view_btn_redo.setOnClickListener {
+            btn_redo.performClick()
+            btn_redo.setPressed(true)
+            btn_redo.invalidate()
+            btn_redo.setPressed(false)
+            btn_redo.invalidate()
         }
-        return super.onOptionsItemSelected(item)
+        btn_redo.setOnClickListener { mCustomView!!.onClickRedo() }
+
+        btn_color_change.setOnClickListener {
+            val colorPicker = ColorPicker(this@CanvasActivity)
+            colorPicker.setOnFastChooseColorListener(object : OnFastChooseColorListener {
+                override fun setOnFastChooseColorListener(position: Int, color: Int) {
+                    // get the integer value of color
+                    // selected from the dialog box and
+                    // set it as the stroke color
+                    customView.setColor(color)
+                    btn_color_change.setColorFilter(color)
+                }
+
+                override fun onCancel() {
+                    colorPicker.dismissDialog()
+                }
+            }) // set the number of color columns
+                // you want  to show in dialog.
+                .setColumns(4) // set a default color selected
+                // in the dialog
+                .setColors(colorList)
+                .setRoundColorButton(true)
+                .setTitle("필사에 이용할 잉크 색을 골라주세요!")
+                .show()
+        }
+        view_btn_color.setOnClickListener { btn_color_change.performClick()  }
+
+        seek?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            var progressChanged = 0
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                progressChanged = progress
+                tv_progress_seek_bar.setText(getString(R.string.draw_thickness, progress))
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                tv_progress_seek_bar.setText(getString(R.string.draw_thickness, seek.progress))
+                progressChanged = seek.progress
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                /*
+                Toast.makeText(this@CanvasActivity,
+                "획 두께가 " + seek.progress + "포인트에요.",
+                Toast.LENGTH_SHORT).show()
+                */
+                tv_progress_seek_bar.setText(getString(R.string.draw_thickness, seek.progress))
+                Log.d("Debug","brush : $progressChanged pt")
+                mCustomView!!.setBrushSize(progressChanged.toFloat())
+                mCustomView!!.setLastBrushSize(progressChanged.toFloat())
+
+
+            }
+        })
+    }
+
+    private fun setColorList() {
+        colorList.add("#000000")
+        colorList.add("#FFFFFF")
+        colorList.add("#FF7777")
+        colorList.add("#FFA427")
+        colorList.add("#B7E831")
+        colorList.add("#74A9FF")
+        colorList.add("#2B45D6")
+        colorList.add("#7C55FF")
+        colorList.add("#FFCD93")
+        colorList.add("#00ED52")
+        colorList.add("#74DFFF")
+        colorList.add("#ACACF8")
+        colorList.add("#1F1F1F")
+        colorList.add("#404040")
+        colorList.add("#797979")
+        colorList.add("#C4C4C4")
+        Log.d("colorPicker","color check-the last color: "+colorList.get(15))
+
+
     }
 }

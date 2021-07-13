@@ -5,9 +5,9 @@
     <application
         android:hardwareAccelerated="false"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/ic_launcher_glee"
+        android:label="@string/app_name_kor"
+        android:roundIcon="@mipmap/ic_launcher_glee"
         android:supportsRtl="true"
         android:theme="@style/Theme.Glee">
         <activity android:name=".CanvasActivity"></activity>
