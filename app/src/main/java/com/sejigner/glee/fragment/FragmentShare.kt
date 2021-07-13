@@ -1,9 +1,13 @@
 package com.sejigner.glee.fragment
 
+import android.app.Activity
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -70,4 +74,5 @@ open class FragmentShare : Fragment() {
 
         return listOfWork
     }
+
 }

@@ -18,7 +18,7 @@ public class CustomView extends View {
     private Path drawPath;
     private Paint canvasPaint;
     private Paint drawPaint;
-    private int paintColor = 0xFF00FF0C;
+    private int paintColor = 0xFF00ED52;
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
     private int currentColor;
@@ -158,5 +158,7 @@ public class CustomView extends View {
     public void setColor(int color) {
         currentColor = color;
     }
+
+
 
 }

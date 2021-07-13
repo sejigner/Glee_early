@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:background="#DDDDDD"
+    <androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
         tools:context=".fragment.FragmentShare">
 
         <LinearLayout
@@ -14,28 +15,28 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:paddingTop="28dp"
-                android:paddingBottom="6dp"
-                android:background="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingTop="28dp"
+                android:paddingBottom="6dp">
 
                 <TextView
-                    android:paddingStart="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
+                    android:paddingStart="16dp"
                     android:text="추천 필사본"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <HorizontalScrollView
-                    android:paddingStart="16dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingStart="16dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -73,38 +74,40 @@
                                 app:cardCornerRadius="10dp">
 
                                 <ImageView
-                                    android:scaleType="fitXY"
                                     android:id="@+id/iv_work_exam_1"
-                                    android:src="@drawable/work_exam"
                                     android:layout_width="wrap_content"
                                     android:layout_height="240dp"
                                     android:adjustViewBounds="true"
-                                    android:orientation="vertical"/>
+                                    android:orientation="vertical"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/work_exam" />
                             </androidx.cardview.widget.CardView>
 
 
                             <LinearLayout
-                                android:layout_marginTop="4dp"
-                                android:layout_marginVertical="6dp"
-                                android:layout_marginEnd="8dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_marginVertical="6dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="8dp"
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:textSize="12sp"
                                     android:layout_width="220dp"
                                     android:layout_height="wrap_content"
                                     android:ellipsize="end"
-                                    android:text="이별은 미의 창조라는 한용운 시인의 작품..." />
+                                    android:text="이별은 미의 창조라는 한용운 시인의 작품..."
+                                    android:textSize="12sp" />
+
                                 <View
-                                    android:layout_weight="1"
                                     android:layout_width="0dp"
-                                    android:layout_height="0dp"/>
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1" />
+
                                 <ImageView
-                                    android:layout_gravity="end"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_gravity="end"
                                     android:src="@drawable/ic_dot_menu" />
 
                             </LinearLayout>
@@ -144,26 +147,25 @@
                                     android:id="@+id/iv_work_exam_2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="240dp"
-                                    android:src="@drawable/work_exam2"
                                     android:adjustViewBounds="true"
                                     android:orientation="vertical"
-                                    />
+                                    android:src="@drawable/work_exam2" />
 
                             </androidx.cardview.widget.CardView>
 
 
                             <LinearLayout
-                                android:layout_marginVertical="6dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_marginVertical="6dp"
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:textSize="12sp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="기말고사가 끝나고..." />
+                                    android:text="기말고사가 끝나고..."
+                                    android:textSize="12sp" />
 
                             </LinearLayout>
 
@@ -175,9 +177,10 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginHorizontal="16dp"
+                android:background="#DDDDDD"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -188,11 +191,11 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
                         android:text="둘러보기"
+                        android:textColor="@color/black"
                         android:textSize="18dp"
                         android:textStyle="bold" />
 
@@ -234,5 +237,5 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </layout>

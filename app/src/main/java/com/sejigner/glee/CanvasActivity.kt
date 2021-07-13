@@ -1,11 +1,15 @@
 package com.sejigner.glee
+
+import android.app.Activity
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.Typeface
+import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -27,10 +31,12 @@ class CanvasActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_canvas)
+        transparentStatusAndNavigation()
         mCustomView = findViewById<View>(R.id.customView) as CustomView
         setColorList()
         val metrics = DisplayMetrics()
         val seek = findViewById<SeekBar>(R.id.seek_bar_brush_size)
+
 
         windowManager.defaultDisplay.getMetrics(metrics)
         /*
@@ -121,9 +127,9 @@ class CanvasActivity : AppCompatActivity() {
                 .setTitle("필사에 이용할 잉크 색을 골라주세요!")
                 .show()
         }
-        view_btn_color.setOnClickListener { btn_color_change.performClick()  }
+        view_btn_color.setOnClickListener { btn_color_change.performClick() }
 
-        seek?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+        seek?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             var progressChanged = 0
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 progressChanged = progress
@@ -143,7 +149,7 @@ class CanvasActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT).show()
                 */
                 tv_progress_seek_bar.setText(getString(R.string.draw_thickness, seek.progress))
-                Log.d("Debug","brush : $progressChanged pt")
+                Log.d("Debug", "brush : $progressChanged pt")
                 mCustomView!!.setBrushSize(progressChanged.toFloat())
                 mCustomView!!.setLastBrushSize(progressChanged.toFloat())
 
@@ -169,8 +175,50 @@ class CanvasActivity : AppCompatActivity() {
         colorList.add("#404040")
         colorList.add("#797979")
         colorList.add("#C4C4C4")
-        Log.d("colorPicker","color check-the last color: "+colorList.get(15))
+        Log.d("colorPicker", "color check-the last color: " + colorList.get(15))
 
 
+    }
+
+    private fun Activity.transparentStatusAndNavigation(
+        systemUiScrim: Int = Color.parseColor("#40000000") // 25% black
+    ) {
+        var systemUiVisibility = 0
+        // Use a dark scrim by default since light status is API 23+
+        var statusBarColor = systemUiScrim
+        //  Use a dark scrim by default since light nav bar is API 27+
+        var navigationBarColor = systemUiScrim
+        val winParams = window.attributes
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            systemUiVisibility = systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            statusBarColor = Color.TRANSPARENT
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            systemUiVisibility = systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+            navigationBarColor = Color.TRANSPARENT
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            systemUiVisibility = systemUiVisibility or
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                    View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+            window.decorView.systemUiVisibility = systemUiVisibility
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            winParams.flags = winParams.flags or
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS or
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            winParams.flags = winParams.flags and
+                    (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS or
+                            WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION).inv()
+            window.statusBarColor = statusBarColor
+            window.navigationBarColor = navigationBarColor
+        }
+
+        window.attributes = winParams
     }
 }
