@@ -40,7 +40,7 @@
                     android:id="@+id/iv_writer_image"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_my_page" />
+                    android:src="@drawable/ic_my_page_selected" />
 
                 <TextView
                     android:id="@+id/tv_writer_name"

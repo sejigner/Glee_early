@@ -5,19 +5,19 @@
         android:id="@+id/home"
         app:showAsAction="ifRoom"
         android:enabled="true"
-        android:icon="@drawable/bottom_selector_first"
+        android:icon="@drawable/bottom_selector_home"
         android:title="home"/>
     <item
         android:id="@+id/chat"
         app:showAsAction="ifRoom"
         android:enabled="true"
-        android:icon="@drawable/bottom_selector_second"
+        android:icon="@drawable/bottom_selector_share"
         android:title="share"/>
 
     <item
         android:id="@+id/my_page"
         app:showAsAction="ifRoom"
         android:enabled="true"
-        android:icon="@drawable/ic_circle"
+        android:icon="@drawable/bottom_selector_my_page"
         android:title="my_page"/>
 </menu>

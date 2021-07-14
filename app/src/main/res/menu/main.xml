@@ -18,13 +18,13 @@
         android:id="@+id/blur"
         app:showAsAction="ifRoom"
         android:enabled="true"
-        android:icon="@drawable/ic_my_page"
+        android:icon="@drawable/ic_my_page_selected"
         android:title="blur"/>
 
     <item
         android:id="@+id/clear"
         app:showAsAction="ifRoom"
         android:enabled="true"
-        android:icon="@drawable/ic_my_page"
+        android:icon="@drawable/ic_my_page_selected"
         android:title="clear"/>
 </menu>

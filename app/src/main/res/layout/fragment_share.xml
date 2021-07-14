@@ -60,7 +60,7 @@
                                     android:id="@+id/iv_sample_user_picture_1"
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
-                                    android:src="@drawable/ic_my_page" />
+                                    android:src="@drawable/ic_my_page_selected" />
 
                                 <TextView
                                     android:textColor="@color/black"
@@ -134,7 +134,7 @@
                                     android:id="@+id/iv_sample_user_picture_2"
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
-                                    android:src="@drawable/ic_my_page" />
+                                    android:src="@drawable/ic_my_page_selected" />
 
                                 <TextView
                                     android:textColor="@color/black"

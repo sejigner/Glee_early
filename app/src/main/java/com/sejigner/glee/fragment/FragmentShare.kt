@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.sejigner.glee.*
 import kotlinx.android.synthetic.main.fragment_share.*
 
@@ -54,24 +53,24 @@ open class FragmentShare : Fragment() {
     private fun generateDummyData(): List<WorkModel> {
         val listOfWork = mutableListOf<WorkModel>()
 
-        var workModel = WorkModel("지멘", 128, R.drawable.exam_1, R.drawable.ic_my_page)
+        var workModel = WorkModel("지멘", 128, R.drawable.exam_1, R.drawable.ic_my_page_selected)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("보석", 11, R.drawable.exam_2, R.drawable.ic_my_page)
+        workModel = WorkModel("보석", 11, R.drawable.exam_2, R.drawable.ic_my_page_selected)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("배준수", 29, R.drawable.exam_3, R.drawable.ic_my_page)
+        workModel = WorkModel("배준수", 29, R.drawable.exam_3, R.drawable.ic_my_page_selected)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("흰둥", 98, R.drawable.exam_4, R.drawable.ic_my_page)
+        workModel = WorkModel("흰둥", 98, R.drawable.exam_4, R.drawable.ic_my_page_selected)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("여의도", 30, R.drawable.exam_5, R.drawable.ic_my_page)
+        workModel = WorkModel("여의도", 30, R.drawable.exam_5, R.drawable.ic_my_page_selected)
         listOfWork.add(workModel)
 
-        workModel = WorkModel("혜승", 56, R.drawable.current_work_sample_my_page2, R.drawable.ic_my_page)
+        workModel = WorkModel("혜승", 56, R.drawable.current_work_sample_my_page2, R.drawable.ic_my_page_selected)
         listOfWork.add(workModel)
-        workModel = WorkModel("성북", 7, R.drawable.work_sample_my_page2, R.drawable.ic_my_page)
+        workModel = WorkModel("성북", 7, R.drawable.work_sample_my_page2, R.drawable.ic_my_page_selected)
         listOfWork.add(workModel)
 
 
