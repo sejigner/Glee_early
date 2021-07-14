@@ -10,6 +10,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.sejigner.glee.*
 import kotlinx.android.synthetic.main.fragment_my_page.*
+import kotlinx.android.synthetic.main.fragment_share.*
 
 class FragmentMyPage : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
@@ -40,9 +41,15 @@ class FragmentMyPage : Fragment() {
 
     private fun initView() {
 
-        rv_recent_work_my_page.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        rv_recent_work_my_page.layoutManager = StaggeredGridLayoutManager(2, 1).apply {
+            gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS
+            orientation = StaggeredGridLayoutManager.VERTICAL
+        }
+        rv_recent_work_my_page.setHasFixedSize(false)
+
+        //rv_recent_work_my_page.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         //This will for default android divider
-        rv_recent_work_my_page.addItemDecoration(GridItemDecoration(10, 2))
+        //rv_recent_work_my_page.addItemDecoration(GridItemDecoration(10, 2))
 
         val workListAdapter = WorkListMyPageStaggeredAdapter()
         rv_recent_work_my_page.adapter = workListAdapter

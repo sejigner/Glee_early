@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.sejigner.glee.*
 import kotlinx.android.synthetic.main.fragment_share.*
 
@@ -34,16 +35,15 @@ open class FragmentShare : Fragment() {
     }
 
     private fun initView() {
-/*
+
         rv_work.layoutManager = StaggeredGridLayoutManager(2, 1).apply {
-            gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
+            gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS
             orientation = StaggeredGridLayoutManager.VERTICAL
         }
-        rv_work.setHasFixedSize(true)
+        rv_work.setHasFixedSize(false)
 
- */
         //This will for default android divider
-        rv_work.addItemDecoration(GridItemDecoration(10, 2))
+        // rv_work.addItemDecoration(GridItemDecoration(10, 2))
         // rv_work.layoutManager
         val workListAdapter = WorkListStaggeredAdapter()
         rv_work.adapter = workListAdapter
