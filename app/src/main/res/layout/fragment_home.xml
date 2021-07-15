@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="#F5F5F5"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="26dp"
+                android:paddingHorizontal="26dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -98,7 +99,7 @@
             android:layout_height="0dp"
             android:layout_margin="16dp"
             app:cardCornerRadius="13dp"
-            app:cardElevation="1dp"
+            app:cardElevation="2dp"
             app:layout_constraintBottom_toTopOf="@+id/tv_new_transcription"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -113,6 +114,7 @@
                     android:id="@+id/banner_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
                     android:background="@drawable/glee_theme_gradation"
                     android:orientation="vertical"
                     app:layout_constraintTop_toTopOf="parent">
@@ -122,7 +124,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
-                        android:layout_marginTop="12dp"
                         android:text="별 헤는 밤_윤동주"
                         android:textColor="@color/white"
                         android:textSize="18sp"
@@ -132,7 +133,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:layout_marginEnd="12dp"
                         android:text="468자"
                         android:textColor="@color/white"

@@ -17,7 +17,7 @@ open class FragmentShare : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setImageSample()
+
     }
 
 
@@ -25,6 +25,7 @@ open class FragmentShare : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initView()
+        setImageSample()
     }
 
     private fun setImageSample() {
@@ -35,16 +36,17 @@ open class FragmentShare : Fragment() {
     }
 
     private fun initView() {
-
+/*
         rv_work.layoutManager = StaggeredGridLayoutManager(2, 1).apply {
             gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS
             orientation = StaggeredGridLayoutManager.VERTICAL
         }
         rv_work.setHasFixedSize(false)
-
+*/
         //This will for default android divider
-        // rv_work.addItemDecoration(GridItemDecoration(10, 2))
-        // rv_work.layoutManager
+        rv_work.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        rv_work.addItemDecoration(GridItemDecoration(10, 2))
+        rv_work.layoutManager
         val workListAdapter = WorkListStaggeredAdapter()
         rv_work.adapter = workListAdapter
         workListAdapter.setWorkList(generateDummyData())

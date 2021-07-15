@@ -18,12 +18,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_launcher_background"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="26dp"
+            android:layout_height="34dp"
             android:background="#40000000"
             app:layout_constraintBottom_toBottomOf="parent">
 
@@ -60,6 +59,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
                     android:text="238"
+                    android:textSize="12sp"
+                    android:layout_gravity="center_vertical"
                     android:textColor="#ffffff" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
