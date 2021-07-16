@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".CanvasActivity">
 
     <LinearLayout
@@ -63,9 +63,9 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
-            android:paddingHorizontal="26dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingHorizontal="26dp">
 
             <RadioButton
                 android:id="@+id/rb_canvas_hambaksnow"
@@ -146,11 +146,11 @@
                 android:id="@+id/tv_work_canvas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/hambaksnow"
                 android:gravity="center_horizontal"
                 android:lineSpacingExtra="20dp"
+                android:paddingTop="20dp"
                 android:text="@string/work_canvas"
                 android:textColor="#DDDDDD"
                 android:textSize="70sp"
@@ -208,9 +208,9 @@
                     android:id="@+id/btn_color_change"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:src="@drawable/btn_color_change_new"
-                    android:adjustViewBounds="true"
                     android:layout_marginStart="4dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/btn_color_change_new"
                     app:layout_constraintBottom_toBottomOf="@id/tv_color"
                     app:layout_constraintTop_toTopOf="@id/tv_color"
                     card_view:layout_constraintStart_toEndOf="@id/tv_color" />
@@ -219,10 +219,10 @@
                     android:id="@+id/view_btn_color"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    card_view:layout_constraintTop_toTopOf="parent"
                     card_view:layout_constraintBottom_toBottomOf="parent"
+                    card_view:layout_constraintEnd_toStartOf="@id/tv_thickness"
                     card_view:layout_constraintStart_toStartOf="@id/tv_color"
-                    card_view:layout_constraintEnd_toStartOf="@id/tv_thickness"/>
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_thickness"
@@ -240,36 +240,37 @@
                     android:id="@+id/tv_progress_seek_bar"
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp"
+                    android:layout_marginStart="4dp"
                     android:text="20"
                     android:textColor="#646464"
-                    android:layout_marginStart="4dp"
-                    card_view:layout_constraintStart_toEndOf="@id/tv_thickness"
+                    android:textSize="16dp"
+                    card_view:layout_constraintBottom_toBottomOf="parent"
                     card_view:layout_constraintEnd_toStartOf="@+id/dp"
-                    card_view:layout_constraintTop_toTopOf="parent"
-                    card_view:layout_constraintBottom_toBottomOf="parent"/>
+                    card_view:layout_constraintStart_toEndOf="@id/tv_thickness"
+                    card_view:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:id="@+id/dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="dp"
+                    card_view:layout_constraintBottom_toBottomOf="parent"
                     card_view:layout_constraintStart_toEndOf="@id/tv_progress_seek_bar"
-                    card_view:layout_constraintTop_toTopOf="parent"
-                    card_view:layout_constraintBottom_toBottomOf="parent"/>
+                    card_view:layout_constraintTop_toTopOf="parent" />
 
                 <SeekBar
-                    android:thumb="@drawable/seekbar_brush_size_thumb"
-                    android:progressDrawable="@drawable/seekbar_brush_size_bar"
-                    android:max="40"
-                    android:min="1"
-                    android:progress="20"
                     android:id="@+id/seek_bar_brush_size"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
+                    android:max="40"
+                    android:min="1"
+                    android:progress="20"
+                    android:progressDrawable="@drawable/seekbar_brush_size_bar"
                     android:src="@drawable/ic_thickness_background"
+                    android:thumb="@drawable/seekbar_brush_size_thumb"
                     card_view:layout_constraintBottom_toBottomOf="parent"
-                    card_view:layout_constraintStart_toEndOf="@id/dp"
                     card_view:layout_constraintEnd_toStartOf="@id/view_btn_undo"
+                    card_view:layout_constraintStart_toEndOf="@id/dp"
                     card_view:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
@@ -290,8 +291,8 @@
                     android:id="@+id/btn_redo"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
                     android:layout_marginEnd="18dp"
+                    android:adjustViewBounds="true"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -303,19 +304,17 @@
 
                 <View
                     android:id="@+id/view_btn_redo"
-                    card_view:layout_constraintEnd_toEndOf="@id/btn_redo"
                     android:layout_width="38dp"
-                    card_view:layout_constraintStart_toStartOf="@id/btn_redo"
-                    android:layout_height="match_parent">
-                </View>
+                    android:layout_height="match_parent"
+                    card_view:layout_constraintEnd_toEndOf="@id/btn_redo"
+                    card_view:layout_constraintStart_toStartOf="@id/btn_redo"></View>
 
                 <View
                     android:id="@+id/view_btn_undo"
-                    card_view:layout_constraintEnd_toEndOf="@id/btn_undo"
                     android:layout_width="38dp"
-                    card_view:layout_constraintStart_toStartOf="@id/btn_undo"
-                    android:layout_height="match_parent">
-                </View>
+                    android:layout_height="match_parent"
+                    card_view:layout_constraintEnd_toEndOf="@id/btn_undo"
+                    card_view:layout_constraintStart_toStartOf="@id/btn_undo"></View>
 
                 <ImageView
                     android:id="@+id/btn_toggle_scroll"
@@ -328,7 +327,6 @@
                     card_view:layout_constraintBottom_toBottomOf="parent"
                     card_view:layout_constraintEnd_toEndOf="parent"
                     card_view:layout_constraintTop_toTopOf="parent" />
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
